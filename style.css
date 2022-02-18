@@ -117,12 +117,16 @@ body {
 	width: auto;
 }
 
-.weather-temp {
+.weather-temp  {
 	margin: 0;
 	font-weight: 700;
-	font-size: 4em;
+	font-size: 3em;
 }
-
+.time-clock {
+	margin: 0;
+	font-weight: 700;
+	font-size: 5.5em;
+}
 .weather-desc {
 	margin: 0;
 }
@@ -131,18 +135,20 @@ body {
 	position: relative;
 	float: left;
 	height: 100%;
-	padding-top: 25px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .today-info {
-	padding: 15px;
+	line-height: 1.2em;
+	padding: 5px 15px;
 	margin: 0 25px 25px 25px;
 /* 	box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25); */
 	border-radius: 10px;
 }
 
 .today-info>div:not(:last-child) {
-	margin: 0 0 10px 0;
+	margin: 0 0 8px 0;
 }
 
 .today-info>div .title {
@@ -161,7 +167,7 @@ body {
 	-webkit-box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
 	        box-shadow: 0 0 50px -5px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
-	background: #
+	/* background: #weather-temp */
 }
 
 .week-list>li {
@@ -211,7 +217,7 @@ body {
 }
 
 .location-container {
-	padding: 25px 35px;
+	padding: 12px 35px;
 }
 
 .location-button {
@@ -246,4 +252,7 @@ body {
 	height: 1em;
 	width: auto;
 	margin-right: 5px;
+}
+.today-info-container {
+	line-height: 1.2em;
 }
