@@ -52,13 +52,13 @@ setInterval(clock, 1000*60)
 
 
 
-let url22 = 'https://api.openweathermap.org/data/2.5/onecall?lat=50.0&lon=36.25&lang=ru&appid=7501295286a1dda1338ea7f343999a0c'
-fetch(url22)
-.then((response)=> {
-    // console.dir(response)
-    return response.json();
+// let url22 = 'https://api.openweathermap.org/data/2.5/onecall?lat=50.0&lon=36.25&lang=ru&appid=7501295286a1dda1338ea7f343999a0c'
+// fetch(url22)
+// .then((response)=> {
+//     // console.dir(response)
+//     return response.json();
     
-}
-).then((data)=> {
-    console.log(data)
-})
+// }
+// ).then((data)=> {
+//     console.log(data)
+// })
