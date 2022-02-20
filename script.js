@@ -2,6 +2,7 @@ let timeClock = document.querySelector('.time-clock');
 let timeDate = document.querySelector('.date-day');
 let nowDay = document.querySelector('.date-dayname');
 let day = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+let daySm = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
 
 // часы дата
 function clock() {
@@ -65,41 +66,75 @@ let windSpeed = document.querySelector('.wind-speed > span');
 let wind = document.querySelector('.wind > span');
 let sunrise = document.querySelector('.sunrise > span');
 let sunset = document.querySelector('.sunset > span');
-let curDay = document.querySelector('.week-list');
+let weekDays = document.querySelectorAll('.week-day');
 
 let url = `https://api.openweathermap.org/data/2.5/onecall?lat=50.0&lon=36.25&lang=ru&appid=${apiKey}`
 fetch(url)
     .then((response) => {
         return response.json()
     }).then((data) => {
-        console.log(data)
-        getNowData(data.current.dt);
-        getNowData(data.daily[0].dt);
-        getNowData(data.daily[1].dt);
-        currentWeather(data)
+        console.log(data);
+        getAllIcons(data);
+        getAllDays(data);
+        getAllTemp(data)
+        currentWeather(data);
+
     });
 
-function getNowData(data) {
-    let out ='';
+function getData(data) {
+    let out = '';
     let d = new Date(data * 1e3);
     out = d.getHours() + ' : ' + d.getMinutes();
-
     return out;
     // console.log(d.getDay() + '/' + d.getHours() + ' ' + d.getMinutes())
 }
 
+function getDay(data) {
+    let d = new Date(data * 1e3);
+    let out = '';
+    daySm.forEach((item, index) => {
+        if (d.getDay() == index) out = item;
+    })
+    return out;
+}
+
+function getAllIcons(data) {
+
+}
+
+function getAllDays(data) {
+    weekDays[0].children[1].innerHTML = getDay(data.current.dt);
+    weekDays[1].children[1].innerHTML = getDay(data.daily[1].dt);
+    weekDays[2].children[1].innerHTML = getDay(data.daily[2].dt);
+    weekDays[3].children[1].innerHTML = getDay(data.daily[3].dt);
+}
+
+function getAllTemp(data) {
+    weekDays[0].children[2].innerHTML = (data.daily[0].temp.day - 273).toFixed(1) + '&deg;' + 'C';
+    weekDays[1].children[2].innerHTML = (data.daily[1].temp.day - 273).toFixed(1) + '&deg;' + 'C';
+    weekDays[2].children[2].innerHTML = (data.daily[2].temp.day - 273).toFixed(1) + '&deg;' + 'C';
+    weekDays[3].children[2].innerHTML = (data.daily[3].temp.day - 273).toFixed(1) + '&deg;' + 'C';
+}
+
+
 function currentWeather(data) {
-    bigTemp.innerHTML = (data.current.temp - 273).toFixed(1) + 'C' + '&deg;';
+    bigTemp.innerHTML = (data.current.temp - 273).toFixed(1) + '&deg;' + 'C';
     humidity.textContent = data.current.humidity + ' %';
     pressure.textContent = (data.current.pressure * 0.75006375541921).toFixed() + ' мм';
     windSpeed.textContent = data.daily[0].wind_speed + ' м/с';
     wind.textContent = data.daily[0].wind_gust + ' м/с';
-    sunrise.textContent = getNowData(data.current.sunrise);
-    sunset.textContent = getNowData(data.current.sunset);
+    sunrise.textContent = getData(data.current.sunrise);
+    sunset.textContent = getData(data.current.sunset);
 }
 
-function outInfo() {}
+function outInfo(event) {
+    weekDays.forEach(item => item.classList.remove('active'));
+    this.classList.add('active');
+}
 
+weekDays.forEach((item) => {
+    item.addEventListener('click', outInfo)
+})
 
 
 function convertData(data) {
