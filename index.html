@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>weather Doc station</title>
+    <link rel="stylesheet" href="style-font.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="container">
@@ -19,7 +22,8 @@
                 <!-- <span class="location">Paris, FR</span> -->
                 <p class="time-clock">12:12</p>
             </div>
-            <div class="weather-container"><i class="weather-icon" data-feather="sun"></i>
+            <div class="weather-container">
+                <span class="icon-cloud"></span>
                 <h2 class="weather-temp">29°C</h2>
                 <!-- <h3 class="weather-desc">Sunny</h3> -->
             </div>
@@ -27,41 +31,54 @@
         <div class="info-side">
             <div class="today-info-container">
                 <div class="today-info">
-                    <div class="flx precipitation"> 
-                        <span class="title">Давление</span>
+                    <div class="flx pressure">
+
                         <span class="value">0 %</span>
+                        <span class="title">Давление</span>
                     </div>
-                    <div class="flx humidity"> 
-                        <span class="title">Влажность</span>
+                    <div class="flx humidity">
                         <span class="value">34 %</span>
+                        <span class="title">Влажность</span>
+
                     </div>
                     <div class="flx wind-speed">
-                         <span class="title">Ветер</span>
-                         <span class="value">0 km/h</span>
-                    </div>
-                    <div class="flx wind"> 
-                        <span class="title">Порывы ветра</span>
+
                         <span class="value">0 km/h</span>
+                        <span class="title">Ветер</span>
+                    </div>
+                    <div class="flx wind">
+
+                        <span class="value">0 km/h</span>
+                        <span class="title">Порывы ветра</span>
                     </div>
                     <div class="flx sunrise">
-                         <span class="title">Восход</span>
-                         <span class="value">0 km/h</span>
+
+                        <span class="value">0 km/h</span>
+                        <span class="title">Восход</span>
                     </div>
                     <div class="flx sunset">
-                        <span class="title">Закат</span>
+
                         <span class="value">0 km/h</span>
-                   </div>
+                        <span class="title">Закат</span>
+                    </div>
                 </div>
             </div>
             <div class="space"></div>
             <div class="week-container">
                 <ul class="week-list">
                     <li class="active">
+                        <span class="icon-cloud"></span>
                         <span class="day-name">Tue</span><span class="day-temp">29°C</span>
                     </li>
-                    <li><span class="day-name">Wed</span><span class="day-temp">21°C</span></li>
-                    <li><span class="day-name">Thu</span><span class="day-temp">08°C</span></li>
-                    <li><span class="day-name">Fry</span><span class="day-temp">19°C</span></li>
+                    <li>
+                        <span class="icon-cloud"></span>
+                        <span class="day-name">Wed</span><span class="day-temp">21°C</span></li>
+                    <li>
+                        <span class="icon-cloud"></span>
+                        <span class="day-name">Thu</span><span class="day-temp">08°C</span></li>
+                    <li>
+                        <span class="icon-cloud"></span>
+                        <span class="day-name">Fry</span><span class="day-temp">19°C</span></li>
                 </ul>
             </div>
             <!-- <div class="location-container">
@@ -71,4 +88,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
