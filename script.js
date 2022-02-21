@@ -67,7 +67,7 @@ let wind = document.querySelector('.wind > span');
 let sunrise = document.querySelector('.sunrise > span');
 let sunset = document.querySelector('.sunset > span');
 let weekDays = document.querySelectorAll('.week-day');
-
+let indx;
 let url = `https://api.openweathermap.org/data/2.5/onecall?lat=50.0&lon=36.25&lang=ru&appid=${apiKey}`
 fetch(url)
     .then((response) => {
@@ -127,13 +127,39 @@ function currentWeather(data) {
     sunset.textContent = getData(data.current.sunset);
 }
 
-function outInfo(event) {
+function selectWetherDay(event) {
     weekDays.forEach(item => item.classList.remove('active'));
     this.classList.add('active');
+    weekDays.forEach((item, index) => {
+        if (item == this) {
+            indx = index;
+        }
+    });  
+    dayWeather();
+}
+
+function dayWeather(){
+    fetch(url)
+    .then((response) => {
+        return response.json()
+    }).then((data) => {
+        console.log(data);
+        outDayWeather(data.daily);
+    });
+}
+
+function outDayWeather(data){
+    bigTemp.innerHTML = (data[indx].temp.max - 273).toFixed(1) + '&deg;' + 'C';
+    humidity.textContent = data[indx].humidity + ' %';
+    pressure.textContent = (data[indx].pressure * 0.75006375541921).toFixed() + ' мм';
+    windSpeed.textContent = data[indx].wind_speed + ' м/с';
+    wind.textContent = data[indx].wind_gust + ' м/с';
+    sunrise.textContent = getData(data[indx].sunrise);
+    sunset.textContent = getData(data[indx].sunset);
 }
 
 weekDays.forEach((item) => {
-    item.addEventListener('click', outInfo)
+    item.addEventListener('click', selectWetherDay)
 })
 
 
